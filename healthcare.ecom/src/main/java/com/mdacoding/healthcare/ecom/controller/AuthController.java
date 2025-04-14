@@ -46,7 +46,7 @@ public class AuthController {
     @Autowired
     PasswordEncoder encoder;
 
-    @PostMapping("/signin")
+    @PostMapping("/signIn")
     public ResponseEntity<?> authenticateUser(@RequestBody LoginRequest loginRequest) {
         Authentication authentication;
         try {
@@ -136,7 +136,6 @@ public class AuthController {
             return "";
     }
 
-
     @GetMapping("/user")
     public ResponseEntity<?> getUserDetails(Authentication authentication){
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
@@ -151,8 +150,8 @@ public class AuthController {
         return ResponseEntity.ok().body(response);
     }
 
-    @PostMapping("/signout")
-    public ResponseEntity<?> signoutUser(){
+    @PostMapping("/signOut")
+    public ResponseEntity<?> signOutUser(){
         ResponseCookie cookie = jwtUtils.getCleanJwtCookie();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE,
                         cookie.toString())

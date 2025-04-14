@@ -8,9 +8,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface ProductService {
     ProductDTO addProduct(Long categoryId, Product product);
-    ProductResponse getAllProducts();
-    ProductResponse searchByCategory(Long categoryId);
-    ProductResponse searchProductByKeyword(String keyword);
+    ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder, String keyword, String categor);
+    ProductResponse searchByCategory(Long categoryId, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
+    ProductResponse searchProductByKeyword(String keyword, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
     ProductDTO updateProduct(Long productId, @Valid ProductDTO productDTO);
     ProductDTO deleteProduct(Long productId);
     ProductDTO updateProductImage(Long productId, MultipartFile image);
